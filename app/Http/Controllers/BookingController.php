@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comprobante;
+use App\Models\booking;
 use Illuminate\Http\Request;
 
-class ComprobanteController extends Controller
+class BookingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class ComprobanteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Comprobante $comprobante)
+    public function show(booking $booking)
     {
         //
     }
@@ -42,7 +42,7 @@ class ComprobanteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Comprobante $comprobante)
+    public function edit(booking $booking)
     {
         //
     }
@@ -50,7 +50,7 @@ class ComprobanteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Comprobante $comprobante)
+    public function update(Request $request, booking $booking)
     {
         //
     }
@@ -58,7 +58,7 @@ class ComprobanteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Comprobante $comprobante)
+    public function destroy(booking $booking)
     {
         //
     }

@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('habitacions', function (Blueprint $table) {
+        Schema::create('rooms', function (Blueprint $table) {
             $table->id();
             $table->integer('numero_habitacion');
-            $table->integer('numero_piso');
-            $table->integer('precio_unitario');
-            $table->enum('disponibilidad',['disponible','ocupado']);
+            $table->string('tipo_habitacion');
+            $table->string('description');
+            $table->decimal('precio_noche');
+            $table->unsignedBigInteger('room_category_id')->nullable();
+            $table->foreign('room_category_id')->references('id')->on('room_categories')->onDelete('set null');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('habitacions');
+        Schema::dropIfExists('rooms');
     }
 };

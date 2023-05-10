@@ -1,14 +1,6 @@
 <?php
-
-use App\Http\Controllers\AlquilerController;
-use App\Http\Controllers\CategoriaController;
-use App\Http\Controllers\ClienteController;
-use App\Http\Controllers\ComprobanteController;
-use App\Http\Controllers\HabitacionController;
-use App\Http\Controllers\PagoController;
-use App\Http\Controllers\ReservaController;
-use App\Models\Habitacion;
-use App\Models\Pago;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,13 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resources('/alquiler',AlquilerController::class);
-Route::resources('/categoria',CategoriaController::class);
-Route::resources('/cliente',ClienteController::class);
-Route::resources('/comprobante',ComprobanteController::class);
-Route::resources('/habitacion',HabitacionController::class);
-Route::resources('/pago',PagoController::class);
-Route::resources('/producto',ProductoController::class);
-Route::resources('/reserva',ReservaController::class);
-Route::resources('/venta',VentaController::class);
+Route::resource('/products',ProductController::class);
+Route::resource('/categories',CategoryController::class);
 

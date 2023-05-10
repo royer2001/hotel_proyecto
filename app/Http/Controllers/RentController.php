@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Habitacion;
+use App\Models\rent;
 use Illuminate\Http\Request;
 
-class HabitacionController extends Controller
+class RentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class HabitacionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Habitacion $habitacion)
+    public function show(rent $rent)
     {
         //
     }
@@ -42,7 +42,7 @@ class HabitacionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Habitacion $habitacion)
+    public function edit(rent $rent)
     {
         //
     }
@@ -50,7 +50,7 @@ class HabitacionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Habitacion $habitacion)
+    public function update(Request $request, rent $rent)
     {
         //
     }
@@ -58,7 +58,7 @@ class HabitacionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Habitacion $habitacion)
+    public function destroy(rent $rent)
     {
         //
     }

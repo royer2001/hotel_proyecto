@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Alquiler;
+use App\Models\voucher;
 use Illuminate\Http\Request;
 
-class AlquilerController extends Controller
+class VoucherController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class AlquilerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Alquiler $alquiler)
+    public function show(voucher $voucher)
     {
         //
     }
@@ -42,7 +42,7 @@ class AlquilerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Alquiler $alquiler)
+    public function edit(voucher $voucher)
     {
         //
     }
@@ -50,7 +50,7 @@ class AlquilerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Alquiler $alquiler)
+    public function update(Request $request, voucher $voucher)
     {
         //
     }
@@ -58,7 +58,7 @@ class AlquilerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Alquiler $alquiler)
+    public function destroy(voucher $voucher)
     {
         //
     }

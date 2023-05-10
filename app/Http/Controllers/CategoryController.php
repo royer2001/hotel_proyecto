@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pago;
+use App\Models\category;
 use Illuminate\Http\Request;
 
-class PagoController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,6 +13,9 @@ class PagoController extends Controller
     public function index()
     {
         //
+
+        $categories = category::all();
+        return view('categories', compact('categories'));
     }
 
     /**
@@ -34,7 +37,7 @@ class PagoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pago $pago)
+    public function show(category $category)
     {
         //
     }
@@ -42,7 +45,7 @@ class PagoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pago $pago)
+    public function edit(category $category)
     {
         //
     }
@@ -50,7 +53,7 @@ class PagoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pago $pago)
+    public function update(Request $request, category $category)
     {
         //
     }
@@ -58,7 +61,7 @@ class PagoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pago $pago)
+    public function destroy(category $category)
     {
         //
     }

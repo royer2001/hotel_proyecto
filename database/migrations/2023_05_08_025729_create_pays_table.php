@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reservas', function (Blueprint $table) {
+        Schema::create('pays', function (Blueprint $table) {
             $table->id();
-            $table->date('fecha_reserva');
+            $table->date('fecha_pago');
+            $table->decimal("monto_pagado");
+            $table->string("metodo_pago");
+            
+            $table->unsignedBigInteger('booking_id')->nullable();
+            $table->foreign('booking_id')->references('id')->on('bookings')->onDelete('cascade');
             $table->timestamps();
-            $table->unsignedBigInteger('post_id');
-            $table->foreign('id_reservas')->references('id')->on('cliente');
         });
     }
 
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reservas');
+        Schema::dropIfExists('pays');
     }
 };
