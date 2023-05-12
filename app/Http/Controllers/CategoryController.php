@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      */
@@ -15,7 +17,7 @@ class CategoryController extends Controller
         //
 
         $categories = category::all();
-        return view('categories', compact('categories'));
+        return view('crud_categories/categories_index', compact('categories'));
     }
 
     /**
@@ -24,6 +26,7 @@ class CategoryController extends Controller
     public function create()
     {
         //
+        return view('crud_categories/categories_create');
     }
 
     /**
@@ -32,6 +35,17 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name' => 'required|unique:categories|max:255',
+            'description' => 'nullable',
+        ]);
+
+        $category = new Category();
+        $category->name = $request->input('name');
+        $category->description = $request->input('description');
+        $category->save();
+
+        return redirect()->route('categories.index')->with('success', 'Category created successfully.');
     }
 
     /**
@@ -40,6 +54,9 @@ class CategoryController extends Controller
     public function show(category $category)
     {
         //
+
+        return view('crud_categories/categories_show', compact('category'));
+
     }
 
     /**
@@ -48,6 +65,7 @@ class CategoryController extends Controller
     public function edit(category $category)
     {
         //
+        return view('crud_categories/categories_edit', compact('category'));
     }
 
     /**
@@ -56,6 +74,16 @@ class CategoryController extends Controller
     public function update(Request $request, category $category)
     {
         //
+        $request->validate([
+            'name' => 'required|unique:categories,name,' . $category->id . '|max:255',
+            'description' => 'nullable',
+        ]);
+
+        $category->name = $request->input('name');
+        $category->description = $request->input('description');
+        $category->save();
+
+        return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
     }
 
     /**
@@ -64,5 +92,8 @@ class CategoryController extends Controller
     public function destroy(category $category)
     {
         //
+        $category->delete();
+
+        return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
     }
 }

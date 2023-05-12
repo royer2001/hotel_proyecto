@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\category;
 use App\Models\product;
 use Illuminate\Http\Request;
 
@@ -13,9 +14,8 @@ class ProductController extends Controller
     public function index()
     {
         //
-
-        return 'index fun';
-
+        $products = product::with('category')->paginate(10);
+        return view('crud_products/products_index', compact('products'));
     }
 
     /**
@@ -24,6 +24,8 @@ class ProductController extends Controller
     public function create()
     {
         //
+        $categories = category::all();
+        return view('crud_products/products_create', compact('categories'));
     }
 
     /**
@@ -32,6 +34,13 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+        $product = new Product();
+        $product->name = $request->input('name');
+        $product->description = $request->input('description');
+        $product->price = $request->input('price');
+        $product->category_id = $request->input('category_id');
+        $product->save();
+        return redirect()->route('products.index')->with('success', 'Product created successfully.');
     }
 
     /**
@@ -40,6 +49,8 @@ class ProductController extends Controller
     public function show(product $product)
     {
         //
+        return view('crud_products/products_show', compact('product'));
+
     }
 
     /**
@@ -48,6 +59,8 @@ class ProductController extends Controller
     public function edit(product $product)
     {
         //
+        $categories = Category::all();
+        return view('crud_products/products_edit', compact('product', 'categories'));
     }
 
     /**
@@ -56,6 +69,12 @@ class ProductController extends Controller
     public function update(Request $request, product $product)
     {
         //
+        $product->name = $request->input('name');
+        $product->description = $request->input('description');
+        $product->price = $request->input('price');
+        $product->category_id = $request->input('category_id');
+        $product->save();
+        return redirect()->route('products.index')->with('success', 'Product updated');
     }
 
     /**
